@@ -47,7 +47,7 @@ namespace IM_DTRPayroll
 
         private void btn_DTR_Click(object sender, EventArgs e)
         {
-            if (txtbx_Pass.Text == "" || )
+            
         }
     }
 }
