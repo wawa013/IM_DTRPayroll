@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2CD185C6-351E-4484-8151-E7257B884059}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IM_DTRPayroll</RootNamespace>
+    <AssemblyName>IM_DTRPayroll</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.3.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 8.3.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminPageMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPageMenu.Designer.cs">
+      <DependentUpon>AdminPageMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_LogIn.Designer.cs">
+      <DependentUpon>Admin_LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeductionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeductionsForm.Designer.cs">
+      <DependentUpon>DeductionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Homepage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Homepage.Designer.cs">
+      <DependentUpon>Homepage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DTR_LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DTR_LogIn.Designer.cs">
+      <DependentUpon>DTR_LogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OvertimeApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OvertimeApproval.Designer.cs">
+      <DependentUpon>OvertimeApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Overtime_ReqForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Overtime_ReqForm.Designer.cs">
+      <DependentUpon>Overtime_ReqForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegNewEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegNewEmp.Designer.cs">
+      <DependentUpon>RegNewEmp.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminPageMenu.resx">
+      <DependentUpon>AdminPageMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_LogIn.resx">
+      <DependentUpon>Admin_LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeductionsForm.resx">
+      <DependentUpon>DeductionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Homepage.resx">
+      <DependentUpon>Homepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DTR_LogIn.resx">
+      <DependentUpon>DTR_LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OvertimeApproval.resx">
+      <DependentUpon>OvertimeApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Overtime_ReqForm.resx">
+      <DependentUpon>Overtime_ReqForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RegNewEmp.resx">
+      <DependentUpon>RegNewEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
