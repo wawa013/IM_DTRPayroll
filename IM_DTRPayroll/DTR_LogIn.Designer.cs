@@ -38,10 +38,10 @@
             this.btn_DTR = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -131,6 +131,7 @@
             this.btn_DTR.TabIndex = 8;
             this.btn_DTR.Text = "Clock Time";
             this.btn_DTR.UseVisualStyleBackColor = false;
+            this.btn_DTR.Click += new System.EventHandler(this.btn_DTR_Click);
             // 
             // button1
             // 
@@ -157,6 +158,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(420, 132);
             this.panel1.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel5.Location = new System.Drawing.Point(0, 1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(10, 132);
+            this.panel5.TabIndex = 3;
             // 
             // panel2
             // 
@@ -190,14 +199,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(420, 116);
             this.panel4.TabIndex = 13;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel5.Location = new System.Drawing.Point(0, 1);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(10, 132);
-            this.panel5.TabIndex = 3;
             // 
             // DTR_LogIn
             // 
