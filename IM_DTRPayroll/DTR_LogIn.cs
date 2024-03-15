@@ -37,7 +37,7 @@ namespace IM_DTRPayroll
             
             txtbx_User.Text = "";
             txtbx_Pass.Text = "";
-            this.Close();
+            this.Close(); 
         }
 
         private void lblUserID_Click(object sender, EventArgs e)
