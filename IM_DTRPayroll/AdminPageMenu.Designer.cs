@@ -51,6 +51,9 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel14.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -60,6 +63,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel17
@@ -181,7 +185,7 @@
             this.panel8.BackColor = System.Drawing.Color.Teal;
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.button3);
-            this.panel8.Location = new System.Drawing.Point(3, 752);
+            this.panel8.Location = new System.Drawing.Point(3, 846);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(438, 89);
             this.panel8.TabIndex = 8;
@@ -240,6 +244,7 @@
             this.ButtonsLayoutPanel.Controls.Add(this.panel12);
             this.ButtonsLayoutPanel.Controls.Add(this.panel10);
             this.ButtonsLayoutPanel.Controls.Add(this.panel7);
+            this.ButtonsLayoutPanel.Controls.Add(this.panel2);
             this.ButtonsLayoutPanel.Controls.Add(this.panel8);
             this.ButtonsLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.ButtonsLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -295,6 +300,39 @@
             this.dataGridView1.Size = new System.Drawing.Size(1405, 823);
             this.dataGridView1.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Teal;
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Location = new System.Drawing.Point(3, 752);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(435, 88);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel5.Location = new System.Drawing.Point(0, 1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(10, 83);
+            this.panel5.TabIndex = 8;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Teal;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(9, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(429, 82);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "New Payroll Period";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // AdminPageMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,6 +357,7 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,5 +387,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button2;
     }
 }

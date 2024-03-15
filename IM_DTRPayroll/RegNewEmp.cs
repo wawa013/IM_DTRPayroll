@@ -116,6 +116,7 @@ namespace IM_DTRPayroll
                             comboBox_Pos.Items.Add(position);
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -146,6 +147,7 @@ namespace IM_DTRPayroll
                             comboBox_Sched.Items.Add(schedule);
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -180,6 +182,7 @@ namespace IM_DTRPayroll
                             comboBox.Items.Add(reader.GetString(0));
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {

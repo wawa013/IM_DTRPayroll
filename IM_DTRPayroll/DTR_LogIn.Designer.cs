@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,10 +43,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label_Time = new System.Windows.Forms.Label();
+            this.label_Date = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -125,7 +131,7 @@
             this.btn_DTR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DTR.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DTR.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_DTR.Location = new System.Drawing.Point(16, 36);
+            this.btn_DTR.Location = new System.Drawing.Point(22, 21);
             this.btn_DTR.Name = "btn_DTR";
             this.btn_DTR.Size = new System.Drawing.Size(301, 49);
             this.btn_DTR.TabIndex = 8;
@@ -139,7 +145,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(323, 36);
+            this.button1.Location = new System.Drawing.Point(329, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 49);
             this.button1.TabIndex = 9;
@@ -195,17 +201,57 @@
             this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.btn_DTR);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 416);
+            this.panel4.Location = new System.Drawing.Point(0, 543);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(420, 116);
+            this.panel4.Size = new System.Drawing.Size(420, 88);
             this.panel4.TabIndex = 13;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.Control;
+            this.panel6.Controls.Add(this.label_Date);
+            this.panel6.Controls.Add(this.label_Time);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 418);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(420, 125);
+            this.panel6.TabIndex = 14;
+            // 
+            // label_Time
+            // 
+            this.label_Time.AutoSize = true;
+            this.label_Time.Font = new System.Drawing.Font("Arial Rounded MT Bold", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Time.Location = new System.Drawing.Point(3, 59);
+            this.label_Time.Name = "label_Time";
+            this.label_Time.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.label_Time.Size = new System.Drawing.Size(444, 61);
+            this.label_Time.TabIndex = 4;
+            this.label_Time.Text = "HH:MM:SS AM";
+            this.label_Time.Click += new System.EventHandler(this.lblUserID_Click);
+            // 
+            // label_Date
+            // 
+            this.label_Date.AutoSize = true;
+            this.label_Date.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Date.Location = new System.Drawing.Point(71, 24);
+            this.label_Date.Name = "label_Date";
+            this.label_Date.Size = new System.Drawing.Size(266, 37);
+            this.label_Date.TabIndex = 4;
+            this.label_Date.Text = "Month DD, YYYY";
+            this.label_Date.Click += new System.EventHandler(this.lblUserID_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // DTR_LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(420, 532);
+            this.ClientSize = new System.Drawing.Size(420, 631);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -221,6 +267,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -240,5 +288,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label_Date;
+        private System.Windows.Forms.Label label_Time;
+        private System.Windows.Forms.Timer timer1;
     }
 }
