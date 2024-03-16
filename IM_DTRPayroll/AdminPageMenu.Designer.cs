@@ -46,24 +46,28 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ButtonsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel14.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel3.SuspendLayout();
             this.ButtonsLayoutPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel17
@@ -87,11 +91,12 @@
             this.btn_DTR.TabIndex = 3;
             this.btn_DTR.Text = "Employee Payroll";
             this.btn_DTR.UseVisualStyleBackColor = false;
+            this.btn_DTR.Click += new System.EventHandler(this.btn_DTR_Click);
             // 
             // panel14
             // 
             this.panel14.Controls.Add(this.btn_DTR);
-            this.panel14.Location = new System.Drawing.Point(3, 253);
+            this.panel14.Location = new System.Drawing.Point(3, 153);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(438, 299);
             this.panel14.TabIndex = 11;
@@ -129,7 +134,7 @@
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel13.Location = new System.Drawing.Point(0, 1);
+            this.panel13.Location = new System.Drawing.Point(0, 2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(10, 83);
             this.panel13.TabIndex = 8;
@@ -139,7 +144,7 @@
             this.panel12.BackColor = System.Drawing.Color.Teal;
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Controls.Add(this.button4);
-            this.panel12.Location = new System.Drawing.Point(3, 558);
+            this.panel12.Location = new System.Drawing.Point(3, 458);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(435, 88);
             this.panel12.TabIndex = 9;
@@ -157,7 +162,7 @@
             this.panel10.BackColor = System.Drawing.Color.Teal;
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Controls.Add(this.button1);
-            this.panel10.Location = new System.Drawing.Point(3, 652);
+            this.panel10.Location = new System.Drawing.Point(3, 552);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(435, 88);
             this.panel10.TabIndex = 8;
@@ -174,7 +179,7 @@
             // 
             this.panel7.AutoSize = true;
             this.panel7.BackColor = System.Drawing.Color.Teal;
-            this.panel7.Location = new System.Drawing.Point(3, 746);
+            this.panel7.Location = new System.Drawing.Point(3, 646);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(0, 0);
             this.panel7.TabIndex = 8;
@@ -185,7 +190,7 @@
             this.panel8.BackColor = System.Drawing.Color.Teal;
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.button3);
-            this.panel8.Location = new System.Drawing.Point(3, 846);
+            this.panel8.Location = new System.Drawing.Point(3, 840);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(438, 89);
             this.panel8.TabIndex = 8;
@@ -245,13 +250,48 @@
             this.ButtonsLayoutPanel.Controls.Add(this.panel10);
             this.ButtonsLayoutPanel.Controls.Add(this.panel7);
             this.ButtonsLayoutPanel.Controls.Add(this.panel2);
+            this.ButtonsLayoutPanel.Controls.Add(this.panel6);
             this.ButtonsLayoutPanel.Controls.Add(this.panel8);
             this.ButtonsLayoutPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.ButtonsLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.ButtonsLayoutPanel.Name = "ButtonsLayoutPanel";
-            this.ButtonsLayoutPanel.Padding = new System.Windows.Forms.Padding(0, 250, 0, 0);
+            this.ButtonsLayoutPanel.Padding = new System.Windows.Forms.Padding(0, 150, 0, 0);
             this.ButtonsLayoutPanel.Size = new System.Drawing.Size(444, 961);
             this.ButtonsLayoutPanel.TabIndex = 15;
+            this.ButtonsLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ButtonsLayoutPanel_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Teal;
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Location = new System.Drawing.Point(3, 652);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(435, 88);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel5.Location = new System.Drawing.Point(0, 1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(10, 83);
+            this.panel5.TabIndex = 8;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Teal;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(9, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(429, 82);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "New Payroll Period";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -300,38 +340,38 @@
             this.dataGridView1.Size = new System.Drawing.Size(1405, 823);
             this.dataGridView1.TabIndex = 0;
             // 
-            // panel2
+            // panel6
             // 
-            this.panel2.BackColor = System.Drawing.Color.Teal;
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Location = new System.Drawing.Point(3, 752);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(435, 88);
-            this.panel2.TabIndex = 10;
+            this.panel6.BackColor = System.Drawing.Color.Teal;
+            this.panel6.Controls.Add(this.panel16);
+            this.panel6.Controls.Add(this.button5);
+            this.panel6.Location = new System.Drawing.Point(3, 746);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(435, 88);
+            this.panel6.TabIndex = 10;
             // 
-            // panel5
+            // panel16
             // 
-            this.panel5.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel5.Location = new System.Drawing.Point(0, 1);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(10, 83);
-            this.panel5.TabIndex = 8;
+            this.panel16.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel16.Location = new System.Drawing.Point(0, 2);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(10, 83);
+            this.panel16.TabIndex = 8;
             // 
-            // button2
+            // button5
             // 
-            this.button2.BackColor = System.Drawing.Color.Teal;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(9, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(429, 82);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "New Payroll Period";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button5.BackColor = System.Drawing.Color.Teal;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button5.Location = new System.Drawing.Point(9, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(429, 82);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "DTR";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // AdminPageMenu
             // 
@@ -354,10 +394,11 @@
             this.panel3.PerformLayout();
             this.ButtonsLayoutPanel.ResumeLayout(false);
             this.ButtonsLayoutPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel2.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,5 +431,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Button button5;
     }
 }

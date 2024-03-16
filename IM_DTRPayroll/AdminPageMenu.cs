@@ -19,6 +19,8 @@ namespace IM_DTRPayroll
 
         //Jireh na db
         private const string connectionString = "server=localhost;Port=3306;Database=db_finalproject;Uid=root;Pwd=;";
+        MySqlDataAdapter da;
+        DataTable dt;
 
         public AdminPageMenu()
         {
@@ -64,11 +66,12 @@ namespace IM_DTRPayroll
                 try
                 {
                     connection.Open();
-                    // Call the method to check and create payroll period
-                    CheckAndCreatePayrollPeriodd();
-                    // Call the method to insert employee payroll records
+                    CreatePayrollPeriod();
                     InsertEmployeePayrollRecords(connection);
-                }catch (Exception ex)
+
+
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -76,7 +79,7 @@ namespace IM_DTRPayroll
 
         }
 
-        private void CheckAndCreatePayrollPeriodd()
+        private void CreatePayrollPeriod()
         {
             try
             {
@@ -84,55 +87,34 @@ namespace IM_DTRPayroll
                 {
                     connection.Open();
 
-                    // Check if there are any existing payroll periods
-                    string checkQuery = "SELECT COUNT(*) FROM payroll_period";
-                    MySqlCommand checkCmd = new MySqlCommand(checkQuery, connection);
-                    int existingPeriodsCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+                    // Get the current date
+                    DateTime currentDate = DateTime.Today;
 
-                    if (existingPeriodsCount == 0) // If no existing periods found
+                    // Calculate the start date as the 1st day of the current month
+                    DateTime startDate = new DateTime(currentDate.Year, currentDate.Month, 1);
+
+                    // Calculate the end date as 15 days after the start date
+                    DateTime endDate = startDate.AddDays(14);
+
+                    // Create a new payroll period with auto-incremented PayrollPeriod_ID
+                    string insertQuery = "INSERT INTO payroll_period (Start_Date, End_Date) VALUES (@Start_Date, @End_Date)";
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
+                    insertCmd.Parameters.AddWithValue("@Start_Date", startDate);
+                    insertCmd.Parameters.AddWithValue("@End_Date", endDate);
+
+                    startDate = endDate;
+
+                    int rowsAffected = insertCmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
                     {
-                        // Get the current date
-                        DateTime currentDate = DateTime.Today;
-                        DateTime startDate;
-                        DateTime endDate;
-
-                        // Check if it's the 1st to 15th or 16th to end of the month
-                        if (currentDate.Day <= 15)
-                        {
-                            // If it's the 1st to 15th, set the start date to the 1st and end date to the 15th
-                            startDate = new DateTime(currentDate.Year, currentDate.Month, 1);
-                            endDate = startDate.AddDays(14); // 15 days duration
-                        }
-                        else
-                        {
-                            // If it's after the 15th, set the start date to the 16th and end date to the end of the month
-                            startDate = new DateTime(currentDate.Year, currentDate.Month, 16);
-                            endDate = new DateTime(currentDate.Year, currentDate.Month, DateTime.DaysInMonth(currentDate.Year, currentDate.Month));
-                        }
-
-                        // Create a new payroll period
-                        string insertQuery = "INSERT INTO payroll_period (Start_Date, End_Date) VALUES (@Start_Date, @End_Date)";
-                        MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
-                        insertCmd.Parameters.AddWithValue("@Start_Date", startDate.ToString("yyyy-MM-dd"));
-                        insertCmd.Parameters.AddWithValue("@End_Date", endDate.ToString("yyyy-MM-dd"));
-
-                        int rowsAffected = insertCmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("New payroll period created successfully!");
-
-                            // Insert records into employee_payroll table for all existing employees
-                            InsertEmployeePayrollRecords(connection);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to create new payroll period.");
-                        }
+                        MessageBox.Show("New payroll period created successfully!");
                     }
                     else
                     {
-                        MessageBox.Show("Active payroll period already exists.");
+                        MessageBox.Show("Failed to create new payroll period.");
                     }
+
+                    connection.Close();
                 }
             }
             catch (Exception ex)
@@ -140,6 +122,7 @@ namespace IM_DTRPayroll
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void InsertEmployeePayrollRecords(MySqlConnection connection)
         {
@@ -180,9 +163,60 @@ namespace IM_DTRPayroll
             }
         }
 
+        private void btn_DTR_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM employee_payroll";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
 
+                    dt = new DataTable();
+                    da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
 
+                    dataGridView1.DataSource = dt;
 
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM employee_payroll";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                    dt = new DataTable();
+                    da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void ButtonsLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

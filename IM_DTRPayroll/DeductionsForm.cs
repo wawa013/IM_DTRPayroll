@@ -147,12 +147,56 @@ namespace IM_DTRPayroll
             this.Close();
         }
 
-        
+
 
         private void btn_DTR_Click(object sender, EventArgs e)
         {
+            // Assuming you have the employee ID stored in some variable, for example:
+            string employeeID = txtbx_User.Text;
 
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    int empPayrollID = Convert.ToInt32(txtbx_User.Text);
+
+                    // Now you have the empPayroll_ID, you can proceed to insert the deduction record
+                    // For demonstration purposes, let's assume you have deduction details stored in variables
+                    int deductionTypeID = ((DeductionType)comboBox_DedType.SelectedItem).DeductionTypeID;
+                    decimal amount = decimal.Parse(txtbx_Amount.Text);
+                    DateTime deductionDate = dateTimePicker1.Value;
+
+                    // Construct the SQL query to insert the deduction record
+                    string insertQuery = "INSERT INTO employee_deductions (EmpPayroll_ID, Deduction_Type_ID, Amount, Date) " +
+                                         "VALUES (@EmpPayrollID, @DeductionTypeID, @Amount, @DeductionDate)";
+                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
+                    insertCmd.Parameters.AddWithValue("@EmpPayrollID", empPayrollID);
+                    insertCmd.Parameters.AddWithValue("@DeductionTypeID", deductionTypeID);
+                    insertCmd.Parameters.AddWithValue("@Amount", amount);
+                    insertCmd.Parameters.AddWithValue("@DeductionDate", deductionDate);
+
+                    // Execute the insert query
+                    int rowsAffected = insertCmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Deduction record added successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add deduction record.");
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
+
 
         private void comboBox_PayPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
