@@ -215,6 +215,7 @@
             this.Name = "Admin_LogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin_LogIn";
+            this.Load += new System.EventHandler(this.Admin_LogIn_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);

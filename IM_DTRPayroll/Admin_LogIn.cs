@@ -28,6 +28,11 @@ namespace IM_DTRPayroll
             this.Close();
         }
 
+        private void Admin_LogIn_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btn_DTR_Click(object sender, EventArgs e)
         {
             String UserInput, PassInput;

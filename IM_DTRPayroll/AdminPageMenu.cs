@@ -18,7 +18,7 @@ namespace IM_DTRPayroll
         //private const string connectionString = "server=localhost;port=3306;username=root;password=masellones;database=db_finalproject";
 
         //Jireh na db
-        private const string connectionString = "server=localhost;Port=3306;Database=db_finalproject;Uid=root;Pwd=;";
+        private const string connectionString = "server=localhost;Port=3306;Database=db_im_finalproj;Uid=root;Pwd=;";
         MySqlDataAdapter da;
         DataTable dt;
 
@@ -88,12 +88,9 @@ namespace IM_DTRPayroll
                     connection.Open();
 
                     // Get the current date
-                    DateTime currentDate = DateTime.Today;
+                    DateTime startDate = DateTime.Today;
 
-                    // Calculate the start date as the 1st day of the current month
-                    DateTime startDate = new DateTime(currentDate.Year, currentDate.Month, 1);
-
-                    // Calculate the end date as 15 days after the start date
+                    // Calculate the end date as 14 days after the start date
                     DateTime endDate = startDate.AddDays(14);
 
                     // Create a new payroll period with auto-incremented PayrollPeriod_ID
@@ -101,8 +98,6 @@ namespace IM_DTRPayroll
                     MySqlCommand insertCmd = new MySqlCommand(insertQuery, connection);
                     insertCmd.Parameters.AddWithValue("@Start_Date", startDate);
                     insertCmd.Parameters.AddWithValue("@End_Date", endDate);
-
-                    startDate = endDate;
 
                     int rowsAffected = insertCmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
@@ -122,6 +117,8 @@ namespace IM_DTRPayroll
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+
 
 
         private void InsertEmployeePayrollRecords(MySqlConnection connection)
@@ -179,6 +176,7 @@ namespace IM_DTRPayroll
 
                     dataGridView1.DataSource = dt;
 
+
                     connection.Close();
                 }
             }
@@ -190,12 +188,43 @@ namespace IM_DTRPayroll
 
         private void button5_Click(object sender, EventArgs e)
         {
+            reloadGrid();
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM employee_payroll";
+                    string query = "SELECT DISTINCT EmpPayroll_ID FROM employee_payroll";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    // Iterate through each EmpPayroll_ID
+                    while (reader.Read())
+                    {
+                        int empPayrollID = reader.GetInt32("EmpPayroll_ID");
+
+                        // Update Other Deductions for the current EmpPayroll_ID
+                        UpdateOtherDeductions(empPayrollID);
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+        private void reloadGrid()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM dtr";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
 
                     dt = new DataTable();
@@ -217,6 +246,54 @@ namespace IM_DTRPayroll
         {
 
         }
+
+        private void AdminPageMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateOtherDeductions(int empPayrollID)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Query to sum up deductions for the given empPayroll_ID
+                    string sumDeductionsQuery = "SELECT SUM(Amount) AS TotalDeductions FROM employee_deduction WHERE EmpPayroll_ID = @EmpPayroll_ID";
+                    MySqlCommand sumDeductionsCmd = new MySqlCommand(sumDeductionsQuery, connection);
+                    sumDeductionsCmd.Parameters.AddWithValue("@EmpPayroll_ID", empPayrollID);
+                    object totalDeductionsObj = sumDeductionsCmd.ExecuteScalar();
+
+                    // Check if total deductions are not null
+                    if (totalDeductionsObj != DBNull.Value)
+                    {
+                        decimal totalDeductions = Convert.ToDecimal(totalDeductionsObj);
+
+                        // Update employee_payroll table with the total deductions
+                        string updatePayrollQuery = "UPDATE employee_payroll SET Other_Deductions = @Other_Deductions WHERE EmpPayroll_ID = @EmpPayroll_ID";
+                        MySqlCommand updatePayrollCmd = new MySqlCommand(updatePayrollQuery, connection);
+                        updatePayrollCmd.Parameters.AddWithValue("@Other_Deductions", totalDeductions);
+                        updatePayrollCmd.Parameters.AddWithValue("@EmpPayroll_ID", empPayrollID);
+                        updatePayrollCmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Other Deductions updated successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No deductions found for the specified empPayroll_ID.");
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
     }
 }
 

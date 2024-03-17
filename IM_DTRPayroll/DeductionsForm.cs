@@ -19,7 +19,7 @@ namespace IM_DTRPayroll
         //private const string connectionString = "server=localhost;port=3306;username=root;password=masellones;database=db_finalproject";
 
         //Jireh na db
-        private const string connectionString = "server=localhost;Port=3306;Database=db_finalproject;Uid=root;Pwd=;";
+        private const string connectionString = "server=localhost;Port=3306;Database=db_im_finalproj;Uid=root;Pwd=;";
 
         public DeductionsForm()
         {
@@ -187,7 +187,7 @@ namespace IM_DTRPayroll
                     {
                         MessageBox.Show("Failed to add deduction record.");
                     }
-
+                    UpdateOtherDeductions();
                     connection.Close();
                 }
             }
@@ -201,6 +201,35 @@ namespace IM_DTRPayroll
         private void comboBox_PayPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void UpdateOtherDeductions ()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT DISTINCT EmpPayroll_ID FROM employee_payroll";
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    // Iterate through each EmpPayroll_ID
+                    while (reader.Read())
+                    {
+                        int empPayrollID = reader.GetInt32("EmpPayroll_ID");
+
+                        // Update Other Deductions for the current EmpPayroll_ID
+                        UpdateOtherDeductions();
+                    }
+                    reader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void comboBox_DedType_SelectedIndexChanged(object sender, EventArgs e)

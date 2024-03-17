@@ -13,7 +13,7 @@ namespace IM_DTRPayroll
         //private const string connectionString = "server=localhost;port=3306;username=root;password=masellones;database=db_finalproject";
 
         //Jireh na db
-        private const string connectionString = "server=localhost;Port=3306;Database=db_finalproject;Uid=root;Pwd=;";
+        private const string connectionString = "server=localhost;Port=3306;Database=db_im_finalproj;Uid=root;Pwd=;";
 
         int val = 1000;
         
